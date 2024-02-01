@@ -10,7 +10,7 @@ import Requests from './components/requests/requests';
 import { TabMenu } from 'primereact/tabmenu';
 
 export const App = () => {
-  const [title] = useState("SE Vuelo");
+  const [title] = useState("");
   const [activeIndex, setActiveIndex] = useState((window.location.pathname === '/requests' || window.location.pathname === '/') ? 1 : 0);
   const navigate = useNavigate();
 

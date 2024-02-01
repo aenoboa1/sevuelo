@@ -11,7 +11,8 @@ export const NewRequest = () => {
 
   const defaultValues = {
     passenger: '',
-    destination: ''
+    destination: '',
+    comments: ''
   }
   const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues });
 
@@ -19,6 +20,7 @@ export const NewRequest = () => {
     const newRequest = defaultValue;
     newRequest.passenger = data.passenger;
     newRequest.destination = data.destination;
+    newRequest.comments = data.comments;
     createRequest(newRequest);
     reset();
     window.location.href = "/requests"
@@ -33,21 +35,34 @@ export const NewRequest = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
               <div className="field">
                 <span className="p-float-label">
-                  <Controller name="passenger" control={control} rules={{ required: 'Passenger is required.' }} render={({ field }) => (
-                    <InputText id={field.name} {...field} />
-                  )} />
-                  <label htmlFor="passenger" className={classNames({ 'p-error': errors.passenger })}>Passenger*</label>
+                  <Controller name="passenger" control={control} rules={{required: 'Passenger is required.'}}
+                              render={({field}) => (
+                                  <InputText id={field.name} {...field} />
+                              )}/>
+                  <label htmlFor="passenger" className={classNames({'p-error': errors.passenger})}>Passenger*</label>
                 </span>
               </div>
               <div className="field">
                 <span className="p-float-label">
-                  <Controller name="destination" control={control} rules={{ required: 'Destination is required.' }} render={({ field }) => (
-                    <InputText id={field.name} {...field} />
-                  )} />
-                  <label htmlFor="destination" className={classNames({ 'p-error': errors.destination })}>Destination*</label>
+                  <Controller name="destination" control={control} rules={{required: 'Destination is required.'}}
+                              render={({field}) => (
+                                  <InputText id={field.name} {...field} />
+                              )}/>
+                  <label htmlFor="destination"
+                         className={classNames({'p-error': errors.destination})}>Destination*</label>
                 </span>
               </div>
-              <Button type="submit" label="Save" />
+              <div className="field">
+                <span className="p-float-label">
+                  <Controller name="comments" control={control}
+                              render={({field}) => (
+                                  <InputText id={field.name} {...field} />
+                              )}/>
+                  <label htmlFor="comments"
+                         className={classNames({'p-error': errors.comments})}>Comments*</label>
+                </span>
+              </div>
+              <Button type="submit" label="Save"/>
             </form>
           </div>
         </div>

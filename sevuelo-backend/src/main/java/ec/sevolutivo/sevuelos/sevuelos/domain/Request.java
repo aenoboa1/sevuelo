@@ -36,6 +36,10 @@ public class Request implements Serializable {
     @Column(name = "status", nullable = false)
     private RequestStatus status;
 
+    @Size(max = 100)
+    @Column(name = "comments", length = 100)
+    private  String comments;
+
     public Long getId() {
         return id;
     }
@@ -68,6 +72,13 @@ public class Request implements Serializable {
         this.status = status;
     }
 
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -85,14 +96,14 @@ public class Request implements Serializable {
         return getClass().hashCode();
     }
 
-    // prettier-ignore
     @Override
     public String toString() {
         return "Request{" +
-                "id=" + getId() +
-                ", passenger='" + getPassenger() + "'" +
-                ", destination='" + getDestination() + "'" +
-                ", status='" + getStatus() + "'" +
-                "}";
+                "id=" + id +
+                ", passenger='" + passenger + '\'' +
+                ", destination='" + destination + '\'' +
+                ", status=" + status +
+                ", comments='" + comments + '\'' +
+                '}';
     }
 }

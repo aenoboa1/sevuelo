@@ -17,6 +17,15 @@ export const updateStatusReserve = (request: IRequest) => {
   const requestUrl = `${apiUrl}/reserve`;
   return axios.put(requestUrl, request);
 };
+export const updateStatusNew = (request: IRequest) => {
+  const requestUrl = `${apiUrl}/unreserve`;
+  return axios.put(requestUrl, request);
+};
+
+export const deleteRequest = (id: number) => {
+  const requestUrl = `${apiUrl}/delete/${id}`;
+  return axios.delete(requestUrl);
+};
 
 export const createRequest = (request: IRequest) => {
   const requestUrl = `${apiUrl}/requests`;

@@ -103,7 +103,7 @@ public class RequestResourceTest {
                         .content(objectMapper.writeValueAsString(completeRequest)))
                         .andExpect(status().isOk());
         Optional<Request> requestFromDataBaseAfterUpdate = requestRepository.findById(completeRequest.getId());
-        assertEquals(RequestStatus.NEW, requestFromDataBaseAfterUpdate.get().getStatus() );
+        assertEquals(RequestStatus.RESERVED, requestFromDataBaseAfterUpdate.get().getStatus() );
     }
 
 }

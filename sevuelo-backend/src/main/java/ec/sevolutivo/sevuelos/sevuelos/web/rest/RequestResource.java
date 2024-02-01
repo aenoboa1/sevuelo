@@ -53,5 +53,19 @@ public class RequestResource {
         requestRepository.save(request);
     }
 
+    @PutMapping("/unreserve")
+    public void unreserve(@RequestBody Request request) {
+        log.debug("REST request to unreserve a flight");
+        request.setStatus(RequestStatus.NEW);
+        requestRepository.save(request);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteRequest(@PathVariable Long id) {
+        log.debug("REST request to delete Request : {}", id);
+        requestRepository.deleteById(id);
+        requestRepository.flush();
+    }
+
 
 }
